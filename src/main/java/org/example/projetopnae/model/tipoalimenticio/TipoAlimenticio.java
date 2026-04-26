@@ -1,4 +1,4 @@
-package org.example.projetopnae.model;
+package org.example.projetopnae.model.tipoalimenticio;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,8 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Edital {
+public class TipoAlimenticio {
     private long id;
-    private String observacao;
     private String nome;
 }

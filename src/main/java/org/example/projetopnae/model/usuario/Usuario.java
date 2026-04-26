@@ -1,19 +1,17 @@
-package org.example.projetopnae.model;
+package org.example.projetopnae.model.usuario;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.sql.Timestamp;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class Entrega {
+public class Usuario {
     private long id;
-    private Timestamp data;
-    private Edital idedital;
-    private Usuario criadopor;
+    private String nome;
+    private String email;
+    private String senha;
 }

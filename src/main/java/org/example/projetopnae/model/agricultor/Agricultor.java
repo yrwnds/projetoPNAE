@@ -1,4 +1,4 @@
-package org.example.projetopnae.model;
+package org.example.projetopnae.model.agricultor;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class TipoAlimenticio {
+public class Agricultor {
     private long id;
     private String nome;
+    private String contato;
 }
