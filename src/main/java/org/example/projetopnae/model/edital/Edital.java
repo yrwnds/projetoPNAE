@@ -1,10 +1,7 @@
 package org.example.projetopnae.model.edital;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,6 +13,9 @@ public class Edital {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     private String observacao;
+
+    @NonNull
     private String nome;
 }

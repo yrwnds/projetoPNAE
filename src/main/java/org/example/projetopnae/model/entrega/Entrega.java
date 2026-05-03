@@ -1,10 +1,7 @@
 package org.example.projetopnae.model.entrega;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.example.projetopnae.model.edital.Edital;
 import org.example.projetopnae.model.usuario.Usuario;
 
@@ -20,7 +17,15 @@ public class Entrega {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @NonNull
     private Timestamp data;
+
+    @ManyToOne
+    @NonNull
     private Edital idedital;
+
+    @ManyToOne
+    @NonNull
     private Usuario criadopor;
 }

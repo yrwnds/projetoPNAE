@@ -1,10 +1,7 @@
 package org.example.projetopnae.model.produtoentrega;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.example.projetopnae.model.agricultor.Agricultor;
 import org.example.projetopnae.model.entrega.Entrega;
 import org.example.projetopnae.model.tipoalimenticio.TipoAlimenticio;
@@ -19,10 +16,20 @@ public class ProdutoEntrega {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     private long qtd;
+
     private String tipound;
+
     private String observacao;
+
+    @ManyToOne
     private TipoAlimenticio idtipo;
+
+    @ManyToOne
+    @NonNull
     private Entrega identrega;
+
+    @ManyToOne
     private Agricultor idagricultor;
 }

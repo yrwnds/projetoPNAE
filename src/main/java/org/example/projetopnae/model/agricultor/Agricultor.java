@@ -16,6 +16,8 @@ public class Agricultor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     private String nome;
+
     private String contato;
 }

@@ -1,10 +1,8 @@
 package org.example.projetopnae.model.usuario;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.validation.constraints.Email;
+import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,7 +15,13 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @NonNull
     private String nome;
+
+    @NonNull
+    @Email
     private String email;
+
+    @NonNull
     private String senha;
 }
