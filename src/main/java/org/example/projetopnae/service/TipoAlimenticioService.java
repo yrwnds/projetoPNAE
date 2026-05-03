@@ -21,8 +21,12 @@ public class TipoAlimenticioService {
         return this.tipoAlimenticioRepository.findAll();
     }
 
-    public TipoAlimenticio getTipoAlimenticio(Long id) {
+    public TipoAlimenticio getTipoAlimenticioId(Long id) {
         return this.tipoAlimenticioRepository.findById(id).get();
+    }
+
+    public List<TipoAlimenticio> getTipoAlimenticioNome(String nome) {
+        return this.tipoAlimenticioRepository.findByNomeContainingIgnoreCase(nome);
     }
 
     public void delete(Long id) {

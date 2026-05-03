@@ -26,6 +26,10 @@ public class ProdutoEntregaService {
         return this.produtoEntregaRepository.findById(id).get();
     }
 
+    public List<ProdutoEntrega> findByAnyParam(String param){
+        return this.produtoEntregaRepository.findByAllParams(param);
+    }
+
     public void delete(Long id) {
         this.produtoEntregaRepository.deleteById(id);
     }

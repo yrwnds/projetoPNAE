@@ -11,4 +11,6 @@ public interface EntregaRepository extends JpaRepository<Entrega, Long> {
     List<Entrega> findByDataBetween(Timestamp start, Timestamp end);
     List<Entrega> findByData(Timestamp data);
 
+    List<Entrega> findAllByOrderByDataAsc();
+    List<Entrega> findAllByOrderByDataDesc();
 }
