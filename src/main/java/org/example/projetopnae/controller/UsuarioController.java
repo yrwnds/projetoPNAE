@@ -1,6 +1,8 @@
 package org.example.projetopnae.controller;
 
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
+import org.example.projetopnae.model.usuario.DadosUsuario;
 import org.example.projetopnae.model.usuario.Usuario;
 import org.example.projetopnae.service.UsuarioService;
 import org.springframework.http.ResponseEntity;
@@ -20,36 +22,31 @@ public class UsuarioController {
     }
 
     @GetMapping("/listar")
-    public List<Usuario> listar(){
+    public List<DadosUsuario> listar(){
         return this.service.findAll();
     }
 
-    @PostMapping("/cadastro")
+    @PostMapping()
     @Transactional
-    public ResponseEntity cadastrar(@RequestBody Usuario usuario, UriComponentsBuilder uriBuilder) {
-        this.service.save(usuario);
-        URI uri = uriBuilder.path("/usuarios/{id}").buildAndExpand(usuario.getId()).toUri();
+    public ResponseEntity cadastrar(@RequestBody @Valid Usuario usuario, UriComponentsBuilder uriBuilder) {
+        this.service.cadastrar(usuario);
+        URI uri = uriBuilder.path("/usuario/{id}").buildAndExpand(usuario.getId()).toUri();
         return ResponseEntity.created(uri).body(usuario);
     }
 
     @GetMapping("/id/{id}")
-    public Usuario buscar(@PathVariable long id){
+    public DadosUsuario buscar(@PathVariable long id){
         return this.service.findById(id);
     }
 
-    @GetMapping("{/email/email}")
-    public Usuario buscarPorEmail(@PathVariable String email){
+    @GetMapping("/email/{email}")
+    public DadosUsuario buscarPorEmail(@PathVariable String email){
         return this.service.findByEmail(email);
     }
 
     @PostMapping("/print-json")
     public void printJson(@RequestBody String json){
         System.out.println(json);
-    }
-
-    @PostMapping()
-    public void salvar(@RequestBody Usuario usuario){
-        this.service.save(usuario);
     }
 
     @PutMapping

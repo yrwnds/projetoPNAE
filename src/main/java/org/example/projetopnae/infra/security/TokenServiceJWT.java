@@ -19,7 +19,6 @@ public class TokenServiceJWT {
             return JWT.create()
                     .withIssuer("API Projeto Extensao PNAE")
                     .withSubject(user.getUsername())
-                    .withClaim("role", user.getAuthorities().stream().toList().get(0).toString())
                     .withExpiresAt(dataExpiracao())
                     .sign(algo);
         } catch (JWTCreationException e) {
