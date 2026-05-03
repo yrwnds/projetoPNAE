@@ -30,6 +30,10 @@ public class UsuarioService {
         return this.usuarioRepository.findByEmailAndSenha(email, senha);
     }
 
+    public Usuario findByEmail(String email) {
+        return this.usuarioRepository.findByEmail(email);
+    }
+
     public void delete(Long id) {
         this.usuarioRepository.deleteById(id);
     }

@@ -2,9 +2,10 @@ package org.example.projetopnae.service;
 
 import org.example.projetopnae.model.agricultor.Agricultor;
 import org.example.projetopnae.model.agricultor.AgricultorRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class AgricultorService {
     private final org.example.projetopnae.model.agricultor.AgricultorRepository AgricultorRepository;
 

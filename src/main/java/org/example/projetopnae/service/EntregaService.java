@@ -2,9 +2,10 @@ package org.example.projetopnae.service;
 
 import org.example.projetopnae.model.entrega.Entrega;
 import org.example.projetopnae.model.entrega.EntregaRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class EntregaService {
     private final EntregaRepository EntregaRepository;
 

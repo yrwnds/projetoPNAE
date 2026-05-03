@@ -2,9 +2,10 @@ package org.example.projetopnae.service;
 
 import org.example.projetopnae.model.edital.Edital;
 import org.example.projetopnae.model.edital.EditalRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class EditalService {
     private final EditalRepository EditalRepository;
 

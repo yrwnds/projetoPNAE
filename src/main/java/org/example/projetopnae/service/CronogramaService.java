@@ -2,9 +2,10 @@ package org.example.projetopnae.service;
 
 import org.example.projetopnae.model.cronograma.Cronograma;
 import org.example.projetopnae.model.cronograma.CronogramaRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class CronogramaService {
     private final CronogramaRepository cronogramaRepository;
 

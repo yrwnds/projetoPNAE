@@ -2,9 +2,10 @@ package org.example.projetopnae.service;
 
 import org.example.projetopnae.model.tipoalimenticio.TipoAlimenticio;
 import org.example.projetopnae.model.tipoalimenticio.TipoAlimenticioRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class TipoAlimenticioService {
     private final TipoAlimenticioRepository tipoAlimenticioRepository;
 
