@@ -1,9 +1,13 @@
 package org.example.projetopnae.controller;
 
+import jakarta.transaction.Transactional;
 import org.example.projetopnae.model.usuario.Usuario;
 import org.example.projetopnae.service.UsuarioService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -20,9 +24,22 @@ public class UsuarioController {
         return this.service.findAll();
     }
 
-    @GetMapping("/{id}")
+    @PostMapping("/cadastro")
+    @Transactional
+    public ResponseEntity cadastrar(@RequestBody Usuario usuario, UriComponentsBuilder uriBuilder) {
+        this.service.save(usuario);
+        URI uri = uriBuilder.path("/usuarios/{id}").buildAndExpand(usuario.getId()).toUri();
+        return ResponseEntity.created(uri).body(usuario);
+    }
+
+    @GetMapping("/id/{id}")
     public Usuario buscar(@PathVariable long id){
         return this.service.findById(id);
+    }
+
+    @GetMapping("{/email/email}")
+    public Usuario buscarPorEmail(@PathVariable String email){
+        return this.service.findByEmail(email);
     }
 
     @PostMapping("/print-json")
