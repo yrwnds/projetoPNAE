@@ -4,6 +4,7 @@ import org.example.projetopnae.model.entrega.Entrega;
 import org.example.projetopnae.model.entrega.EntregaRepository;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.List;
 @Service
 public class EntregaService {
@@ -23,6 +24,22 @@ public class EntregaService {
 
     public Entrega getEntrega(Long id) {
         return this.EntregaRepository.findById(id).get();
+    }
+
+    public List<Entrega> getDataAsc(){
+        return this.EntregaRepository.findAllByOrderByDataAsc();
+    }
+
+    public List<Entrega> getDataDesc(){
+        return this.EntregaRepository.findAllByOrderByDataDesc();
+    }
+
+    public List<Entrega> findByData(Timestamp data){
+        return this.EntregaRepository.findByData(data);
+    }
+
+    public List<Entrega> findByDataBetween(Timestamp start, Timestamp end){
+        return this.EntregaRepository.findByDataBetween(start, end);
     }
 
     public void delete(Long id) {

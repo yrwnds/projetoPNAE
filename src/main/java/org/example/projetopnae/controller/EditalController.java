@@ -1,13 +1,21 @@
 package org.example.projetopnae.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import org.example.projetopnae.model.edital.Edital;
+import org.example.projetopnae.model.produtoentrega.ProdutoEntrega;
 import org.example.projetopnae.service.EditalService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
 @RequestMapping("/edital")
+@Tag(name = "Edital", description = "Path relacionado a operações de edital.")
 public class EditalController {
     private EditalService service;
     public EditalController(EditalService service) {
@@ -22,6 +30,19 @@ public class EditalController {
     @GetMapping("/id/{id}")
     public Edital buscarId(@PathVariable Long id) {
         return this.service.getEdital(id);
+    }
+
+    @GetMapping("/buscar/{param}")
+    public List<Edital> buscar(@PathVariable String param) {
+        return this.service.buscarEdital(param);
+    }
+
+    @PostMapping()
+    @Transactional
+    public ResponseEntity novo(@RequestBody @Valid Edital edital, UriComponentsBuilder uriBuilder) {
+        this.service.save(edital);
+        URI uri = uriBuilder.path("/edital/{id}").buildAndExpand(edital.getId()).toUri();
+        return ResponseEntity.created(uri).body(edital);
     }
 
     @PostMapping("/print-json")

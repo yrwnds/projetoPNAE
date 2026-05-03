@@ -1,5 +1,6 @@
 package org.example.projetopnae.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.example.projetopnae.infra.security.TokenServiceJWT;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/login")
+@Tag(name = "Autenticacao", description = "Path relacionado a operações de autenticação.")
 public class AutenticacaoController {
     private final AuthenticationManager authenticationManager;
     private final TokenServiceJWT tokenServiceJWT;

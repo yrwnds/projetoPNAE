@@ -1,5 +1,6 @@
 package org.example.projetopnae.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.apache.coyote.Response;
@@ -15,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/tipoalimenticio")
+@Tag(name = "TipoAlimenticio", description = "Path relacionado a operações de tipos alimentícios.")
 public class TipoAlimenticioController {
     private TipoAlimenticioService service;
     public TipoAlimenticioController(TipoAlimenticioService service) {

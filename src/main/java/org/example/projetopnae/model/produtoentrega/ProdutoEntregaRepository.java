@@ -10,10 +10,8 @@ import java.util.List;
 public interface ProdutoEntregaRepository extends JpaRepository<ProdutoEntrega, Long> {
 
     ProdutoEntrega findById(long id);
-    List<ProdutoEntrega> findByIdentrega(Entrega entrega);
-    List<ProdutoEntrega> findByIdagricultorNomeContainingIgnoreCase(String agricultorNome);
-    List<ProdutoEntrega> findByIdtipoNomeContainingIgnoreCase(String tipoAlimenticioNome);
-    List<ProdutoEntrega> findByObservacaoContainingIgnoreCase(String observacao);
+
+    List<ProdutoEntrega> findByIdentregaId(Long entregaid);
 
     @Query("SELECT p FROM ProdutoEntrega p WHERE LOWER(p.observacao) LIKE LOWER(CONCAT('%', :keyword, '%')) OR LOWER(p.idtipo.nome)" +
             "LIKE LOWER(CONCAT('%', :keyword, '%')) OR LOWER(p.idagricultor.nome) LIKE (CONCAT('%', :keyword, '%'))")

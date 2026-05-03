@@ -13,8 +13,8 @@ public class EditalService {
         this.EditalRepository = EditalRepository;
     }
 
-    public void save(Edital Edital) {
-        this.EditalRepository.save(Edital);
+    public void save(Edital edital) {
+        this.EditalRepository.save(edital);
     }
 
     public List<Edital> findAll() {
@@ -25,12 +25,16 @@ public class EditalService {
         return this.EditalRepository.findById(id).get();
     }
 
+    public List<Edital> buscarEdital(String param){
+        return this.EditalRepository.findByNomeOrObservacaoContainingIgnoreCase(param, param);
+    }
+
     public void delete(Long id) {
         this.EditalRepository.deleteById(id);
     }
 
-    public void update(Edital Edital) {
-        Edital t = this.EditalRepository.getReferenceById(Edital.getId());
+    public void update(Edital edital) {
+        Edital t = this.EditalRepository.getReferenceById(edital.getId());
 
         this.EditalRepository.save(t);
     }

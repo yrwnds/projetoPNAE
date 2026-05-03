@@ -34,6 +34,10 @@ public class ProdutoEntregaService {
         this.produtoEntregaRepository.deleteById(id);
     }
 
+    public List<ProdutoEntrega> findByEntrega(Long id){
+        return this.produtoEntregaRepository.findByIdentregaId(id);
+    }
+
     public void update(ProdutoEntrega ProdutoEntrega) {
         ProdutoEntrega t = this.produtoEntregaRepository.getReferenceById(ProdutoEntrega.getId());
         t.setQtd(ProdutoEntrega.getQtd());

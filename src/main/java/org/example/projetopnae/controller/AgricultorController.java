@@ -1,5 +1,6 @@
 package org.example.projetopnae.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.example.projetopnae.model.agricultor.Agricultor;
 import org.example.projetopnae.service.AgricultorService;
 import org.springframework.web.bind.annotation.*;
@@ -8,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/agricultor")
+@Tag(name = "Agricultor", description = "Path relacionado a operações de agricultores.")
 public class AgricultorController {
     private AgricultorService service;
     public AgricultorController(AgricultorService service) {

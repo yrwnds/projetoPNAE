@@ -1,5 +1,6 @@
 package org.example.projetopnae.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.example.projetopnae.model.produtoentrega.ProdutoEntrega;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/produtoentrega")
+@Tag(name = "ProdutoEntrega", description = "Path relacionado a operações de produtos entregues.")
 public class ProdutoEntregaController {
     private ProdutoEntregaService service;
     public ProdutoEntregaController(ProdutoEntregaService service) {
@@ -35,6 +37,11 @@ public class ProdutoEntregaController {
     @GetMapping("/buscar/{param}")
     public List<ProdutoEntrega> buscar(@PathVariable String param) {
         return this.service.findByAnyParam(param);
+    }
+
+    @GetMapping("/identrega/{identrega}")
+    public List<ProdutoEntrega> identrega(@PathVariable Long identrega) {
+        return this.service.findByEntrega(identrega);
     }
 
     @GetMapping("/id/{id}")

@@ -1,5 +1,6 @@
 package org.example.projetopnae.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.example.projetopnae.model.usuario.DadosUsuario;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/usuario")
+@Tag(name = "Usuario", description = "Path relacionado a operações de usuários.")
 public class UsuarioController {
 
     private UsuarioService service;

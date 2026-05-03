@@ -7,5 +7,6 @@ import java.util.List;
 public interface TipoAlimenticioRepository extends JpaRepository<TipoAlimenticio, Long> {
 
     TipoAlimenticio findById(long id);
+
     List<TipoAlimenticio> findByNomeContainingIgnoreCase(String keyword);
 }

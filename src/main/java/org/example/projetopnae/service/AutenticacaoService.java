@@ -23,7 +23,7 @@ public class AutenticacaoService implements UserDetailsService {
             return null;
         }
         else{
-            UserDetails user = User.withUsername(usuario.getEmail()).password(usuario.getSenha()).build();
+            UserDetails user = User.withUsername(usuario.getEmail()).password(usuario.getSenha()).authorities("admin").build();
             return user;
         }
     }
