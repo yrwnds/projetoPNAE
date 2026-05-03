@@ -1,5 +1,6 @@
 package org.example.projetopnae.model.entrega;
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +14,11 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @Getter
 @Setter
+@Entity
+@Table(name = "entrega")
 public class Entrega {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private Timestamp data;
     private Edital idedital;

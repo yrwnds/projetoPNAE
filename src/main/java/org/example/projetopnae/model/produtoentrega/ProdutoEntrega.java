@@ -1,5 +1,6 @@
 package org.example.projetopnae.model.produtoentrega;
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +13,11 @@ import org.example.projetopnae.model.tipoalimenticio.TipoAlimenticio;
 @NoArgsConstructor
 @Getter
 @Setter
+@Entity
+@Table(name = "produtoentrega")
 public class ProdutoEntrega {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private long qtd;
     private String tipound;
