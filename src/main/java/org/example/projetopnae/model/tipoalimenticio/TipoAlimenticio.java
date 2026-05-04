@@ -2,6 +2,8 @@ package org.example.projetopnae.model.tipoalimenticio;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @AllArgsConstructor
@@ -16,6 +18,6 @@ public class TipoAlimenticio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NonNull
+    @NotBlank
     private String nome;
 }

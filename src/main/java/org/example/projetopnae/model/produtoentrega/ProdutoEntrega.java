@@ -2,6 +2,8 @@ package org.example.projetopnae.model.produtoentrega;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.example.projetopnae.model.agricultor.Agricultor;
 import org.example.projetopnae.model.entrega.Entrega;
@@ -29,7 +31,7 @@ public class ProdutoEntrega {
     private TipoAlimenticio idtipo;
 
     @ManyToOne
-    @NonNull
+    @NotBlank
     private Entrega identrega;
 
     @ManyToOne

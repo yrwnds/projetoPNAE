@@ -14,11 +14,12 @@ import java.time.ZoneOffset;
 @Service
 public class TokenServiceJWT {
     public String gerarToken(User user) {
-        try{
+        try {
             Algorithm algo = Algorithm.HMAC256("PNAE");
             return JWT.create()
                     .withIssuer("API Projeto Extensao PNAE")
                     .withSubject(user.getUsername())
+                    .withClaim("role", user.getAuthorities().stream().toList().get(0).toString())
                     .withExpiresAt(dataExpiracao())
                     .sign(algo);
         } catch (JWTCreationException e) {
@@ -31,14 +32,14 @@ public class TokenServiceJWT {
     }
 
     public String getSubject(String token) {
-        try{
+        try {
             Algorithm algorithm = Algorithm.HMAC256("PNAE");
             return JWT.require(algorithm)
                     .withIssuer("API Projeto Extensao PNAE")
                     .build()
                     .verify(token)
                     .getSubject();
-        }  catch (JWTVerificationException e) {
+        } catch (JWTVerificationException e) {
             throw new RuntimeException("Token invalido ou expirado.");
         }
     }

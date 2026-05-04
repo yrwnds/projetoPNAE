@@ -2,6 +2,8 @@ package org.example.projetopnae.model.cronograma;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.example.projetopnae.model.tipoalimenticio.TipoAlimenticio;
 
@@ -26,7 +28,7 @@ public class Cronograma {
 
     private String observacao;
 
-    @NonNull
+    @NotBlank
     private Timestamp previsaoentrega;
 
     @ManyToOne

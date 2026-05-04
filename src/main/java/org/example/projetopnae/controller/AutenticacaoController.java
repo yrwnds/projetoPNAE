@@ -1,6 +1,7 @@
 package org.example.projetopnae.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.example.projetopnae.infra.security.TokenServiceJWT;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -25,7 +26,7 @@ public class AutenticacaoController {
     }
 
     @PostMapping
-    public ResponseEntity efetuarLogin(@RequestBody DadosAutenticacao dados){
+    public ResponseEntity efetuarLogin(@RequestBody @Valid DadosAutenticacao dados){
         try{
             Authentication autenticado = new UsernamePasswordAuthenticationToken(dados.email(), dados.senha());
             Authentication at = authenticationManager.authenticate(autenticado);

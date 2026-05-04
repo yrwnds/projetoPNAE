@@ -2,6 +2,8 @@ package org.example.projetopnae.model.entrega;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.example.projetopnae.model.edital.Edital;
 import org.example.projetopnae.model.usuario.Usuario;
@@ -21,14 +23,14 @@ public class Entrega {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NonNull
+    @NotNull
     private Timestamp data;
 
     @ManyToOne
-    @NonNull
+    @NotBlank
     private Edital idedital;
 
     @ManyToOne
-    @NonNull
+    @NotBlank
     private Usuario criadopor;
 }
