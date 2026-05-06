@@ -20,9 +20,9 @@ import java.sql.Timestamp;
 public class Cronograma {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    private long qtd;
+    private Long qtd;
 
     private String tipound;
 

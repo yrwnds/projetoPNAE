@@ -21,7 +21,7 @@ import java.sql.Timestamp;
 public class Entrega {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @NotNull
     private Timestamp data;

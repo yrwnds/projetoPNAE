@@ -1,10 +1,15 @@
 package org.example.projetopnae.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import org.example.projetopnae.model.agricultor.Agricultor;
 import org.example.projetopnae.service.AgricultorService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -24,6 +29,14 @@ public class AgricultorController {
     @GetMapping("/id/{id}")
     public Agricultor buscarId(@PathVariable Long id) {
         return this.service.getAgricultor(id);
+    }
+
+    @PostMapping()
+    @Transactional
+    public ResponseEntity novo(@RequestBody @Valid Agricultor agricultor, UriComponentsBuilder uriBuilder) {
+        this.service.save(agricultor);
+        URI uri = uriBuilder.path("/agricultor/{id}").buildAndExpand(agricultor.getId()).toUri();
+        return ResponseEntity.created(uri).body(agricultor);
     }
 
     @PostMapping("/print-json")

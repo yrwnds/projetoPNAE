@@ -16,7 +16,7 @@ import lombok.*;
 public class Edital {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     private String observacao;
 

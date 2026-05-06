@@ -19,9 +19,9 @@ import org.example.projetopnae.model.tipoalimenticio.TipoAlimenticio;
 public class ProdutoEntrega {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    private long qtd;
+    private Long qtd;
 
     private String tipound;
 
