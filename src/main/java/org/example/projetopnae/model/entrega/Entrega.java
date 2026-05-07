@@ -24,7 +24,7 @@ public class Entrega {
     private Long id;
 
     @NotNull
-    private Timestamp data;
+    private Timestamp dataentrega;
 
     @ManyToOne
     @NotBlank
