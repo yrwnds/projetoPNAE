@@ -27,19 +27,19 @@ public class EntregaService {
     }
 
     public List<Entrega> getDataAsc(){
-        return this.EntregaRepository.findAllByOrderByDataAsc();
+        return this.EntregaRepository.findAllByOrderByDataentregaAsc();
     }
 
     public List<Entrega> getDataDesc(){
-        return this.EntregaRepository.findAllByOrderByDataDesc();
+        return this.EntregaRepository.findAllByOrderByDataentregaDesc();
     }
 
     public List<Entrega> findByData(Timestamp data){
-        return this.EntregaRepository.findByData(data);
+        return this.EntregaRepository.findByDataentrega(data);
     }
 
     public List<Entrega> findByDataBetween(Timestamp start, Timestamp end){
-        return this.EntregaRepository.findByDataBetween(start, end);
+        return this.EntregaRepository.findByDataentregaBetween(start, end);
     }
 
     public void delete(Long id) {
@@ -48,7 +48,7 @@ public class EntregaService {
 
     public void update(Entrega Entrega) {
         Entrega t = this.EntregaRepository.getReferenceById(Entrega.getId());
-        t.setData(Entrega.getData());
+        t.setDataentrega(Entrega.getDataentrega());
         t.setEdital(Entrega.getEdital());
         this.EntregaRepository.save(t);
     }
