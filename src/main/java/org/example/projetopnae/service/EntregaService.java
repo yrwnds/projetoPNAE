@@ -49,7 +49,7 @@ public class EntregaService {
     public void update(Entrega Entrega) {
         Entrega t = this.EntregaRepository.getReferenceById(Entrega.getId());
         t.setData(Entrega.getData());
-        t.setIdedital(Entrega.getIdedital());
+        t.setEdital(Entrega.getEdital());
         this.EntregaRepository.save(t);
     }
 }

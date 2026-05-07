@@ -28,7 +28,7 @@ public class ProdutoEntrega {
     private String observacao;
 
     @ManyToOne
-    private TipoAlimenticio idtipo;
+    private TipoAlimenticio tipo;
 
     @ManyToOne
     @NotBlank

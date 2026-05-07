@@ -41,10 +41,10 @@ public class ProdutoEntregaService {
     public void update(ProdutoEntrega ProdutoEntrega) {
         ProdutoEntrega t = this.produtoEntregaRepository.getReferenceById(ProdutoEntrega.getId());
         t.setQtd(ProdutoEntrega.getQtd());
-        t.setIdentrega(ProdutoEntrega.getIdentrega());
+        t.setEntrega(ProdutoEntrega.getEntrega());
         t.setIdtipo(ProdutoEntrega.getIdtipo());
         t.setTipound(ProdutoEntrega.getTipound());
-        t.setIdagricultor(ProdutoEntrega.getIdagricultor());
+        t.setAgricultor(ProdutoEntrega.getAgricultor());
         t.setObservacao(ProdutoEntrega.getObservacao());
         this.produtoEntregaRepository.save(t);
     }
