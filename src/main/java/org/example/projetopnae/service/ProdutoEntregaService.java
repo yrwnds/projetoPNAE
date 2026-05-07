@@ -35,14 +35,14 @@ public class ProdutoEntregaService {
     }
 
     public List<ProdutoEntrega> findByEntrega(Long id){
-        return this.produtoEntregaRepository.findByIdentregaId(id);
+        return this.produtoEntregaRepository.findByEntregaId(id);
     }
 
     public void update(ProdutoEntrega ProdutoEntrega) {
         ProdutoEntrega t = this.produtoEntregaRepository.getReferenceById(ProdutoEntrega.getId());
         t.setQtd(ProdutoEntrega.getQtd());
         t.setEntrega(ProdutoEntrega.getEntrega());
-        t.setIdtipo(ProdutoEntrega.getIdtipo());
+        t.setTipo(ProdutoEntrega.getTipo());
         t.setTipound(ProdutoEntrega.getTipound());
         t.setAgricultor(ProdutoEntrega.getAgricultor());
         t.setObservacao(ProdutoEntrega.getObservacao());
