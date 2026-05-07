@@ -25,6 +25,10 @@ public class AgricultorService {
         return this.AgricultorRepository.findById(id).get();
     }
 
+    public Agricultor getAgricultorNomeOuContato(String param){
+        return this.AgricultorRepository.findByNomeContainingIgnoreCaseOrContatoContainingIgnoreCase(param, param);
+    }
+
     public void delete(Long id) {
         this.AgricultorRepository.deleteById(id);
     }

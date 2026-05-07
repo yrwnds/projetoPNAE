@@ -8,5 +8,5 @@ public interface EditalRepository extends JpaRepository<Edital, Long> {
 
     Edital findById(long id);
 
-    List<Edital> findByNomeOrObservacaoContainingIgnoreCase(String nome, String observacao);
+    List<Edital> findByNomeContainingIgnoreCaseOrObservacaoContainingIgnoreCase(String nome, String observacao);
 }

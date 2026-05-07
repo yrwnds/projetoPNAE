@@ -4,6 +4,7 @@ import org.example.projetopnae.model.cronograma.Cronograma;
 import org.example.projetopnae.model.cronograma.CronogramaRepository;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.List;
 @Service
 public class CronogramaService {
@@ -23,6 +24,18 @@ public class CronogramaService {
 
     public Cronograma getCronograma(Long id) {
         return this.cronogramaRepository.findById(id).get();
+    }
+
+    public List<Cronograma> getCronogramaByObservacao(String param) {
+        return this.cronogramaRepository.findByObservacaoContainingIgnoreCase(param);
+    }
+
+    public List<Cronograma> getCronogramaByDate(Timestamp date){
+        return this.cronogramaRepository.findByPrevisaoentrega(date);
+    }
+
+    public List<Cronograma> getCronogramaByDatePeriod(Timestamp start, Timestamp end){
+        return this.cronogramaRepository.findByPrevisaoentregaBetween(start, end);
     }
 
     public void delete(Long id) {

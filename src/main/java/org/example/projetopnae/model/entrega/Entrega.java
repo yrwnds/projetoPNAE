@@ -28,9 +28,9 @@ public class Entrega {
 
     @ManyToOne
     @NotBlank
-    private Edital idedital;
+    private Edital edital;
 
     @ManyToOne
     @NotBlank
-    private Usuario criadopor;
+    private Usuario usuario;
 }

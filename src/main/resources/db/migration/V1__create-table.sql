@@ -32,12 +32,12 @@ create table entrega
 (
     id          serial      not null primary key,
     dataentrega timestamptz not null,
-    idedital    int         not null,
-    criadopor   int         not null,
+    edital_id    int         not null,
+    usuario_id   int         not null,
 
 
-    foreign key (idedital) references edital (id),
-    foreign key (criadopor) references usuario (id)
+    foreign key (edital_id) references edital (id),
+    foreign key (usuario_id) references usuario (id)
 );
 
 create table produtoentrega
@@ -46,13 +46,13 @@ create table produtoentrega
     qtd          int         not null,
     tipound      varchar(32) not null,
     observacao   varchar(255),
-    idtipo       int         not null,
-    identrega    int         not null,
-    idagricultor int         not null,
+    tipo_id       int         not null,
+    entrega_id    int         not null,
+    agricultor_id int         not null,
 
-    foreign key (idagricultor) references agricultor (id),
-    foreign key (idtipo) references tipoalimento (id),
-    foreign key (identrega) references entrega (id)
+    foreign key (agricultor_id) references agricultor (id),
+    foreign key (tipo_id) references tipoalimento (id),
+    foreign key (entrega_id) references entrega (id)
 );
 
 create table cronograma
@@ -62,9 +62,9 @@ create table cronograma
     tipound         varchar(32) not null,
     observacao      varchar(255),
     previsaoentrega timestamptz not null,
-    idtipo          int,
+    tipo_id          int,
 
-    foreign key (idtipo) references tipoalimento (id)
+    foreign key (tipo_id) references tipoalimento (id)
 );
 
 

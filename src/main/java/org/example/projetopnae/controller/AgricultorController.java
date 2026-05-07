@@ -31,6 +31,11 @@ public class AgricultorController {
         return this.service.getAgricultor(id);
     }
 
+    @GetMapping("/buscar/{param}")
+    public Agricultor buscarAnyParam(@PathVariable String param) {
+        return this.service.getAgricultorNomeOuContato(param);
+    }
+
     @PostMapping()
     @Transactional
     public ResponseEntity novo(@RequestBody @Valid Agricultor agricultor, UriComponentsBuilder uriBuilder) {

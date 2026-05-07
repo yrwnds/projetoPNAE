@@ -32,8 +32,8 @@ public class ProdutoEntrega {
 
     @ManyToOne
     @NotBlank
-    private Entrega identrega;
+    private Entrega entrega;
 
     @ManyToOne
-    private Agricultor idagricultor;
+    private Agricultor agricultor;
 }

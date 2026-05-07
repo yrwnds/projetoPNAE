@@ -26,7 +26,7 @@ public class EditalService {
     }
 
     public List<Edital> buscarEdital(String param){
-        return this.EditalRepository.findByNomeOrObservacaoContainingIgnoreCase(param, param);
+        return this.EditalRepository.findByNomeContainingIgnoreCaseOrObservacaoContainingIgnoreCase(param, param);
     }
 
     public void delete(Long id) {

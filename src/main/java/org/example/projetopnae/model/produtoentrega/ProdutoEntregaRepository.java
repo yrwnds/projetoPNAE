@@ -14,7 +14,7 @@ public interface ProdutoEntregaRepository extends JpaRepository<ProdutoEntrega, 
     List<ProdutoEntrega> findByIdentregaId(Long entregaid);
 
     @Query("SELECT p FROM ProdutoEntrega p WHERE LOWER(p.observacao) LIKE LOWER(CONCAT('%', :keyword, '%')) OR LOWER(p.idtipo.nome)" +
-            "LIKE LOWER(CONCAT('%', :keyword, '%')) OR LOWER(p.idagricultor.nome) LIKE (CONCAT('%', :keyword, '%'))")
+            "LIKE LOWER(CONCAT('%', :keyword, '%')) OR LOWER(p.agricultor.nome) LIKE (CONCAT('%', :keyword, '%'))")
     List<ProdutoEntrega> findByAllParams(@Param("keyword") String keyword);
 
 }
