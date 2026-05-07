@@ -1,5 +1,6 @@
 package org.example.projetopnae.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -33,6 +34,7 @@ public class EditalController {
     }
 
     @GetMapping("/buscar/{param}")
+    @Operation(summary = "Buscar edital por nome ou observação", description = "Retorna um edital se parâmetro incluir parte de seu nome ou observação")
     public List<Edital> buscar(@PathVariable String param) {
         return this.service.buscarEdital(param);
     }

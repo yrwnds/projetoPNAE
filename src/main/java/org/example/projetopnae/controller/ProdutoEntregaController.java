@@ -1,5 +1,6 @@
 package org.example.projetopnae.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -35,6 +36,7 @@ public class ProdutoEntregaController {
     }
 
     @GetMapping("/buscar/{param}")
+    @Operation(summary = "Busca produtos por alimentos, agricultor, observação.", description = "Retorna produtos se parâmetro incluir informação sobre alimento, agricultor ou observação do produto entregue.")
     public List<ProdutoEntrega> buscar(@PathVariable String param) {
         return this.service.findByAnyParam(param);
     }

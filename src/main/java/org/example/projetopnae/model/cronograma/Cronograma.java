@@ -28,7 +28,7 @@ public class Cronograma {
 
     private String observacao;
 
-    @NotBlank
+    @NonNull
     private Timestamp previsaoentrega;
 
     @ManyToOne

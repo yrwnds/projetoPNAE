@@ -1,5 +1,6 @@
 package org.example.projetopnae.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -32,6 +33,7 @@ public class AgricultorController {
     }
 
     @GetMapping("/buscar/{param}")
+    @Operation(summary = "Buscar agricultor por nome ou informação de contato", description = "Retorna um agricultor se parâmetro incluir parte de seu nome ou informação de contato")
     public Agricultor buscarAnyParam(@PathVariable String param) {
         return this.service.getAgricultorNomeOuContato(param);
     }

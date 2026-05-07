@@ -1,5 +1,6 @@
 package org.example.projetopnae.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -30,21 +31,25 @@ public class EntregaController {
     }
 
     @GetMapping("/listar/data/asc")
+    @Operation(summary = "Lista de entregas por ordem ascendente", description = "Retorna entregas em ordem ascendente")
     public List<Entrega> listarDataAsc() {
         return this.service.getDataAsc();
     }
 
     @GetMapping("/listar/data/desc")
+    @Operation(summary = "Lista de entregas por ordem descendente", description = "Retorna entregas em ordem descendente")
     public List<Entrega> listarDataDesc() {
         return this.service.getDataDesc();
     }
 
     @GetMapping("/data/{data}")
+    @Operation(summary = "Lista de entregas em determinada data", description = "Retorna entregas realizadas em determinada data")
     public List<Entrega> buscarPorData(@PathVariable Timestamp data) {
         return this.service.findByData(data);
     }
 
     @GetMapping("/entredata/{start}/{end}")
+    @Operation(summary = "Lista de entregas entre uma data e outra", description = "Retorna entregas entre uma data de início e fim")
     public List<Entrega> buscarPorDataEntre(@PathVariable Timestamp start, @PathVariable Timestamp end) {
         return this.service.findByDataBetween(start, end);
     }

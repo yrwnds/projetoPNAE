@@ -20,6 +20,6 @@ public class Edital {
 
     private String observacao;
 
-    @NotBlank
+    @NonNull
     private String nome;
 }

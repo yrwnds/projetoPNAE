@@ -1,5 +1,6 @@
 package org.example.projetopnae.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -33,16 +34,19 @@ public class CronogramaController {
     }
 
     @GetMapping("/buscar/{param}")
+    @Operation(summary = "Buscar cronograma por observação", description = "Retorna um cronograma se parâmetro incluir parte da observação")
     public List<Cronograma> buscarParam(@PathVariable String param) {
         return this.service.getCronogramaByObservacao(param);
     }
 
     @GetMapping("/data/{data}")
+    @Operation(summary = "Buscar agricultor por data de previsão de entrega", description = "Retorna crono. se sua previsão de entrega é para determinada data")
     public List<Cronograma> buscarData(@PathVariable Timestamp data) {
         return this.service.getCronogramaByDate(data);
     }
 
     @GetMapping("/databetween/{start}/{end}")
+    @Operation(summary = "Buscar cronograma por período", description = "Retorna um crono. se estiver entre data 1 e data 2")
     public List<Cronograma> buscarDataBetween(@PathVariable Timestamp start, @PathVariable Timestamp end) {
         return this.service.getCronogramaByDatePeriod(start, end);
     }

@@ -23,14 +23,14 @@ public class Entrega {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
+    @NonNull
     private Timestamp dataentrega;
 
     @ManyToOne
-    @NotBlank
+    @NonNull
     private Edital edital;
 
     @ManyToOne
-    @NotBlank
+    @NonNull
     private Usuario usuario;
 }
