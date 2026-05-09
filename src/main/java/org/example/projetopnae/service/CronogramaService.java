@@ -45,7 +45,7 @@ public class CronogramaService {
     public void update(Cronograma Cronograma) {
         Cronograma t = this.cronogramaRepository.getReferenceById(Cronograma.getId());
         t.setQtd(Cronograma.getQtd());
-        t.setIdtipo(Cronograma.getIdtipo());
+        t.setId(Cronograma.getId());
         t.setTipound(Cronograma.getTipound());
         t.setObservacao(Cronograma.getObservacao());
         t.setPrevisaoentrega(Cronograma.getPrevisaoentrega());
