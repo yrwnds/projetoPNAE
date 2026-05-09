@@ -32,5 +32,5 @@ public class Cronograma {
     private Timestamp previsaoentrega;
 
     @ManyToOne
-    private TipoAlimenticio idtipo;
+    private TipoAlimenticio tipo;
 }
