@@ -31,6 +31,5 @@ public class Entrega {
     private Edital edital;
 
     @ManyToOne
-    @NonNull
     private Usuario usuario;
 }

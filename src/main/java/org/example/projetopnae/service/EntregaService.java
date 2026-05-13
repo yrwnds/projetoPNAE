@@ -2,20 +2,30 @@ package org.example.projetopnae.service;
 
 import org.example.projetopnae.model.entrega.Entrega;
 import org.example.projetopnae.model.entrega.EntregaRepository;
+import org.example.projetopnae.model.usuario.Usuario;
+import org.example.projetopnae.model.usuario.UsuarioRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Objects;
+
 @Service
 public class EntregaService {
     private final EntregaRepository EntregaRepository;
+    private final UsuarioRepository usuarioRepository;
 
-    public EntregaService(EntregaRepository EntregaRepository) {
+    public EntregaService(EntregaRepository EntregaRepository, UsuarioRepository usuarioRepository) {
         this.EntregaRepository = EntregaRepository;
+        this.usuarioRepository = usuarioRepository;
     }
 
-    public void save(Entrega Entrega) {
-        this.EntregaRepository.save(Entrega);
+    public void save(Entrega entrega) {
+        String usuemail = Objects.requireNonNull(SecurityContextHolder.getContext().getAuthentication()).getName();
+        Usuario usulogado = this.usuarioRepository.findByEmail(usuemail);
+        entrega.setUsuario(usulogado);
+        this.EntregaRepository.save(entrega);
     }
 
     public List<Entrega> findAll() {
