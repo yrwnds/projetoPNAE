@@ -31,7 +31,6 @@ public class ProdutoEntrega {
     private TipoAlimenticio tipo;
 
     @ManyToOne
-    @NonNull
     private Entrega entrega;
 
     @ManyToOne

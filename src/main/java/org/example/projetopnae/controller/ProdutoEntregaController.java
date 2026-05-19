@@ -27,10 +27,10 @@ public class ProdutoEntregaController {
         return this.service.findAll();
     }
 
-    @PostMapping()
+    @PostMapping("/{entregaid}")
     @Transactional
-    public ResponseEntity novo(@RequestBody @Valid ProdutoEntrega produtoEntrega, UriComponentsBuilder uriBuilder) {
-        this.service.save(produtoEntrega);
+    public ResponseEntity novo(@RequestBody @Valid ProdutoEntrega produtoEntrega, @PathVariable Long entregaid, UriComponentsBuilder uriBuilder) {
+        this.service.save(produtoEntrega, entregaid);
         URI uri = uriBuilder.path("/produtoentrega/{id}").buildAndExpand(produtoEntrega.getId()).toUri();
         return ResponseEntity.created(uri).body(produtoEntrega);
     }

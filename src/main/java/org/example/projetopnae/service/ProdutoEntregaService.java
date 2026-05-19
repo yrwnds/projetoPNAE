@@ -1,21 +1,29 @@
 package org.example.projetopnae.service;
 
+import org.example.projetopnae.model.entrega.Entrega;
+import org.example.projetopnae.model.entrega.EntregaRepository;
 import org.example.projetopnae.model.produtoentrega.ProdutoEntrega;
 import org.example.projetopnae.model.produtoentrega.ProdutoEntregaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class ProdutoEntregaService {
 
     private final ProdutoEntregaRepository produtoEntregaRepository;
+    private final EntregaRepository entregaRepository;
 
-    public ProdutoEntregaService(ProdutoEntregaRepository ProdutoEntregaRepository) {
+    public ProdutoEntregaService(ProdutoEntregaRepository ProdutoEntregaRepository, EntregaRepository entregaRepository) {
         this.produtoEntregaRepository = ProdutoEntregaRepository;
+        this.entregaRepository = entregaRepository;
     }
 
-    public void save(ProdutoEntrega ProdutoEntrega) {
-        this.produtoEntregaRepository.save(ProdutoEntrega);
+    public void save(ProdutoEntrega produtoEntrega, Long entregaId) {
+        Entrega entrega = this.entregaRepository.getReferenceById(entregaId);
+        produtoEntrega.setEntrega(entrega);
+        this.produtoEntregaRepository.save(produtoEntrega);
     }
 
     public List<ProdutoEntrega> findAll() {
