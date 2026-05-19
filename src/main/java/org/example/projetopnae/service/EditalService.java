@@ -35,7 +35,8 @@ public class EditalService {
 
     public void update(Edital edital) {
         Edital t = this.EditalRepository.getReferenceById(edital.getId());
-
+        t.setObservacao(edital.getObservacao());
+        t.setNome(edital.getNome());
         this.EditalRepository.save(t);
     }
 }

@@ -56,10 +56,10 @@ public class EntregaService {
         this.EntregaRepository.deleteById(id);
     }
 
-    public void update(Entrega Entrega) {
-        Entrega t = this.EntregaRepository.getReferenceById(Entrega.getId());
-        t.setDataentrega(Entrega.getDataentrega());
-        t.setEdital(Entrega.getEdital());
+    public void update(Entrega entrega) {
+        Entrega t = this.EntregaRepository.getReferenceById(entrega.getId());
+        t.setDataentrega(entrega.getDataentrega());
+        t.setEdital(entrega.getEdital());
         this.EntregaRepository.save(t);
     }
 }
