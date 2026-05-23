@@ -2,20 +2,30 @@ package org.example.projetopnae.service;
 
 import org.example.projetopnae.model.cronograma.Cronograma;
 import org.example.projetopnae.model.cronograma.CronogramaRepository;
+import org.example.projetopnae.model.usuario.Usuario;
+import org.example.projetopnae.model.usuario.UsuarioRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Objects;
+
 @Service
 public class CronogramaService {
     private final CronogramaRepository cronogramaRepository;
+    private final UsuarioRepository usuarioRepository;
 
-    public CronogramaService(CronogramaRepository CronogramaRepository) {
+    public CronogramaService(CronogramaRepository CronogramaRepository, UsuarioRepository usuarioRepository) {
         this.cronogramaRepository = CronogramaRepository;
+        this.usuarioRepository = usuarioRepository;
     }
 
-    public void save(Cronograma Cronograma) {
-        this.cronogramaRepository.save(Cronograma);
+    public void save(Cronograma cronograma) {
+        String usuemail = Objects.requireNonNull(SecurityContextHolder.getContext().getAuthentication()).getName();
+        Usuario usulogado = this.usuarioRepository.findByEmail(usuemail);
+        cronograma.setUsuario(usulogado);
+        this.cronogramaRepository.save(cronograma);
     }
 
     public List<Cronograma> findAll() {

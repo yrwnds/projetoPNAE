@@ -2,18 +2,28 @@ package org.example.projetopnae.service;
 
 import org.example.projetopnae.model.tipoalimenticio.TipoAlimenticio;
 import org.example.projetopnae.model.tipoalimenticio.TipoAlimenticioRepository;
+import org.example.projetopnae.model.usuario.Usuario;
+import org.example.projetopnae.model.usuario.UsuarioRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
+
 @Service
 public class TipoAlimenticioService {
     private final TipoAlimenticioRepository tipoAlimenticioRepository;
+    private final UsuarioRepository usuarioRepository;
 
-    public TipoAlimenticioService(TipoAlimenticioRepository tipoAlimenticioRepository) {
+    public TipoAlimenticioService(TipoAlimenticioRepository tipoAlimenticioRepository, UsuarioRepository usuarioRepository) {
         this.tipoAlimenticioRepository = tipoAlimenticioRepository;
+        this.usuarioRepository = usuarioRepository;
     }
 
     public void save(TipoAlimenticio tipoAlimenticio) {
+        String usuemail = Objects.requireNonNull(SecurityContextHolder.getContext().getAuthentication()).getName();
+        Usuario usulogado = this.usuarioRepository.findByEmail(usuemail);
+        tipoAlimenticio.setUsuario(usulogado);
         this.tipoAlimenticioRepository.save(tipoAlimenticio);
     }
 

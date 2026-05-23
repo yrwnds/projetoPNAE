@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.example.projetopnae.model.tipoalimenticio.TipoAlimenticio;
+import org.example.projetopnae.model.usuario.Usuario;
 
 import java.sql.Timestamp;
 
@@ -33,4 +34,7 @@ public class Cronograma {
 
     @ManyToOne
     private TipoAlimenticio tipo;
+
+    @ManyToOne
+    private Usuario usuario;
 }

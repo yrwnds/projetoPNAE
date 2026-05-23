@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.example.projetopnae.model.usuario.Usuario;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,4 +24,7 @@ public class Agricultor {
     private String nome;
 
     private String contato;
+
+    @ManyToOne
+    private Usuario usuario;
 }
