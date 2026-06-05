@@ -7,7 +7,12 @@ import org.example.projetopnae.model.usuario.UsuarioRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Objects;
 
@@ -44,12 +49,21 @@ public class EntregaService {
         return this.EntregaRepository.findAllByOrderByDataentregaDesc();
     }
 
-    public List<Entrega> findByData(Timestamp data){
-        return this.EntregaRepository.findByDataentrega(data);
+    public List<Entrega> findByDataBetween(String start, String end){
+
+        start += " 00:00:00.0";
+        end += " 23:59:59.0";
+
+        Timestamp timestampStart = Timestamp.valueOf(start);
+        Timestamp timestampEnd = Timestamp.valueOf(end);
+
+        return this.EntregaRepository.findByDataentregaBetween(timestampStart, timestampEnd);
     }
 
-    public List<Entrega> findByDataBetween(Timestamp start, Timestamp end){
-        return this.EntregaRepository.findByDataentregaBetween(start, end);
+    public List<Entrega> findByData(String data){
+        data += " 00:00:00.0";
+        Timestamp dataTs = Timestamp.valueOf(data);
+        return this.EntregaRepository.findByDataentrega(dataTs);
     }
 
     public void delete(Long id) {

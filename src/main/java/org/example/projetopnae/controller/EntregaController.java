@@ -44,13 +44,13 @@ public class EntregaController {
 
     @GetMapping("/data/{data}")
     @Operation(summary = "Lista de entregas em determinada data", description = "Retorna entregas realizadas em determinada data")
-    public List<Entrega> buscarPorData(@PathVariable Timestamp data) {
+    public List<Entrega> buscarPorData(@PathVariable String data) {
         return this.service.findByData(data);
     }
 
     @GetMapping("/entredata/{start}/{end}")
     @Operation(summary = "Lista de entregas entre uma data e outra", description = "Retorna entregas entre uma data de início e fim")
-    public List<Entrega> buscarPorDataEntre(@PathVariable Timestamp start, @PathVariable Timestamp end) {
+    public List<Entrega> buscarPorDataEntre(@PathVariable String start, @PathVariable String end) {
         return this.service.findByDataBetween(start, end);
     }
 
