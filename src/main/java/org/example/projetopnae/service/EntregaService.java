@@ -34,7 +34,7 @@ public class EntregaService {
     }
 
     public List<Entrega> findAll() {
-        return this.EntregaRepository.findAll();
+        return this.EntregaRepository.findAllByOrderByDataentregaDesc();
     }
 
     public Entrega getEntrega(Long id) {

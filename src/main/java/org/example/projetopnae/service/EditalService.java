@@ -24,6 +24,7 @@ public class EditalService {
         String usuemail = Objects.requireNonNull(SecurityContextHolder.getContext().getAuthentication()).getName();
         Usuario usulogado = this.usuarioRepository.findByEmail(usuemail);
         edital.setUsuario(usulogado);
+        edital.setNome(edital.getNome().toUpperCase());
         this.editalRepository.save(edital);
     }
 

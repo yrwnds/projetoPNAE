@@ -24,6 +24,7 @@ public class AgricultorService {
         String usuemail = Objects.requireNonNull(SecurityContextHolder.getContext().getAuthentication()).getName();
         Usuario usulogado = this.usuarioRepository.findByEmail(usuemail);
         agricultor.setUsuario(usulogado);
+        agricultor.setNome(agricultor.getNome().toUpperCase());
         this.agricultorRepository.save(agricultor);
     }
 

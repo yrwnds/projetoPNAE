@@ -24,11 +24,12 @@ public class TipoAlimenticioService {
         String usuemail = Objects.requireNonNull(SecurityContextHolder.getContext().getAuthentication()).getName();
         Usuario usulogado = this.usuarioRepository.findByEmail(usuemail);
         tipoAlimenticio.setUsuario(usulogado);
+        tipoAlimenticio.setNome(tipoAlimenticio.getNome().toUpperCase());
         this.tipoAlimenticioRepository.save(tipoAlimenticio);
     }
 
     public List<TipoAlimenticio> findAll() {
-        return this.tipoAlimenticioRepository.findAll();
+        return this.tipoAlimenticioRepository.findAllByOrderByNomeAsc();
     }
 
     public TipoAlimenticio getTipoAlimenticioId(Long id) {

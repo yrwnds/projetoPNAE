@@ -8,5 +8,8 @@ public interface TipoAlimenticioRepository extends JpaRepository<TipoAlimenticio
 
     TipoAlimenticio findById(long id);
 
+    List<TipoAlimenticio> findAllByOrderByNomeAsc();
+
+
     List<TipoAlimenticio> findByNomeContainingIgnoreCase(String keyword);
 }
